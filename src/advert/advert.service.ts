@@ -9,11 +9,9 @@ export class AppService {
   async postAdvert(body: DataDTO, file: Express.Multer.File) {
     const { sell, buy, url } = body;
     const picture = file;
-
     if (!picture) {
       return 'Picture is required';
     }
-
     const newAdvert = {
       sell: sell,
       buy: buy,
