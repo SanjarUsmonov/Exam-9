@@ -1,11 +1,16 @@
-import { IsAlphanumeric, IsString, MaxLength } from "class-validator"
+import {  IsNotEmpty, IsNumberString, IsString, IsUrl, } from "class-validator"
 
-export class LoginDTO {
-    @IsAlphanumeric()
-    @MaxLength(32)
-    username:string;
+export class DataDTO {
+    @IsNumberString()
+    @IsNotEmpty()
+    sell:string;
+    
+    @IsNumberString()
+    @IsNotEmpty()
+    buy:string;
 
-    @IsString()
-    @MaxLength(32)
-    password:string;
+    @IsUrl()
+    @IsNotEmpty()
+    url:string;
+
 }
