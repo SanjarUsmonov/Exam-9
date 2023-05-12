@@ -21,19 +21,26 @@ export class AppController {
   }
 
   //----------------------------------------------------------------------------------------------------------------------
-
+  
   @Post(['product/add', 'product/add/:id'])
   postProduct(@Body() body:any, @Param('id') id:string){
     return this.appService.postProduct([body, id])
   }
-
+  
   @Get('products')
   getProducts() {
     return this.appService.getProducts();
   }
-
+  
   @Get('product/:id')
   getProduct(@Param('id') id: string) {
     return this.appService.getProduct(id);
   }
+
+  //----------------------------------------------------------------------------------------------------------------------\
+
+  @Get('todo')
+   getTodo(){
+    return this.appService.getTodo()
+   }
 }

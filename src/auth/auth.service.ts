@@ -32,9 +32,9 @@ async login(body: LoginDTO) {
 //--------------------------------------------------------------------------------------------------------------------------
 
   //REGISTER PAGE
-  async register(body: RegisterDTO) {
+  async register(body: RegisterDTO, file:Express.Multer.File) {
     //Get request body
-    const { username, password } = body;
+    const { username, password } = body;    
     //Find user from database
     const data = await this.knex('users')
       .select('*')

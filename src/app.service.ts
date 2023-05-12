@@ -21,7 +21,7 @@ export class AppService {
   }
   //---------------------------------------------------------------------------------------------------------------------
   async postProduct([body, id]){
-
+    
     const {name, descr, price, count} = body
 
     const newProduct = {
@@ -31,20 +31,25 @@ export class AppService {
       product_count : count,
       user_id : id,
     }
-
+    
     await this.knex.into('products').insert(newProduct)
-
+    
     return newProduct;
-
+    
   }
-
+  
   async getProducts() {
     const product = await this.knex('products')
     return product;
   }
-
+  
   async getProduct(id){
     const product = await this.knex('products').where({product_id:id})
     return product;
+  }
+  
+  async getTodo(){
+    const todo = await this.knex().select('user_username', 'product_name', 'product_descr', 'product_price', 'product_count', 'product_created_at').table('users').innerJoin('products', 'users.user_id', '=', 'products.user_id')
+    return todo
   }
 }
